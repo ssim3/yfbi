@@ -11,8 +11,8 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
     image,
     description,
     category,
-    author: { _id: authorId, name, profile_img },
-    _id,
+    author: { _id: authorId, name, image: profile_img },
+    slug,
   } = post;
 
   return (
@@ -29,7 +29,7 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
               <p className="hover:underline">{name}</p>
             </Link>
           </div>
-          <button className="hover:scale-110 transition-transform">
+          <button className="transition-transform hover:scale-110">
             <Heart size={24} color="#f43f5e" />
           </button>
         </div>
@@ -37,8 +37,11 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
         <img src={image} alt={title} className="w-full object-cover" />
 
         <div className="flex flex-col gap-2 p-5 pb-0">
-          <Link href={`/idea/${_id}`}>
-            <h3 id="title" className="!text-xl font-bold transition-colors ease-in-out hover:text-rose-500">
+          <Link href={`/idea/${slug.current}`}>
+            <h3
+              id="title"
+              className="!text-xl font-bold transition-colors ease-in-out hover:text-rose-500 hover:underline"
+            >
               {title}
             </h3>
           </Link>

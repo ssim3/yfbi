@@ -1,5 +1,7 @@
 import Searchbar from "@/components/Searchbar";
 import IdeaCard from "@/components/IdeaCard";
+import { client } from "@/sanity/lib/client";
+import { idea_query } from "@/sanity/lib/queries";
 
 const Home = async ({
   searchParams,
@@ -7,59 +9,9 @@ const Home = async ({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
   const query = (await searchParams).search;
+  const posts = await client.fetch(idea_query);
 
-  const posts = [
-    {
-      _id: 1,
-      _createdAt: new Date(),
-      views: 55,
-      author: {
-        _id: 1,
-        name: "Jonathan",
-        profile_img:
-          "https://cdn.prod.website-files.com/6320c9d25c243e328157e175/6320c9d25c243e17dc57e8a6_Tim%20Photo%20square.jpg",
-      },
-      description:
-        "The craziest fat cat you will EVER see in your life. This cat is so fucking fat that your mind will be blown.",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dN075GSE1cYS7lwLbaOH0g_WN7bVOJ8wTg&s",
-      category: "Tech",
-      title: "Fat Robot Cats",
-    },
-    {
-      _id: 2,
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "Jonathan" },
-      description: "This is a description.",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dN075GSE1cYS7lwLbaOH0g_WN7bVOJ8wTg&s",
-      category: "Tech",
-      title: "Fat Robot Cats",
-    },
-    {
-      _id: 3,
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "Jonathan" },
-      description: "This is a description.",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dN075GSE1cYS7lwLbaOH0g_WN7bVOJ8wTg&s",
-      category: "Tech",
-      title: "Fat Robot Cats",
-    },
-    {
-      _id: 4,
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "Jonathan" },
-      description: "This is a description.",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dN075GSE1cYS7lwLbaOH0g_WN7bVOJ8wTg&s",
-      category: "Tech",
-      title: "Fat Robot Cats",
-    },
-  ];
+  console.log(JSON.stringify(posts, null, 2));
 
   return (
     <>
