@@ -7,18 +7,18 @@
     @apply flex h-screen flex-col items-center justify-center gap-5 p-5 text-center;
   }
   .header {
-    @apply sm:w-full md:w-2/3 font-gagalin-sans text-3xl sm:text-4xl  md:text-5xl lg:text-6xl transition-transform;
+    @apply font-gagalin-sans text-3xl transition-transform sm:w-full sm:text-4xl md:w-2/3 md:text-5xl lg:text-6xl;
   }
   .buttonPrimary {
-    @apply rounded-[1.5rem] px-3 py-2 sm:px-4 sm:py-3 bg-white text-black transition-transform ease-linear hover:scale-105;
+    @apply rounded-[1.5rem] bg-white px-3 py-2 text-black transition-transform ease-linear hover:scale-105 sm:px-4 sm:py-3;
   }
 
   .buttonSecondary {
-    @apply rounded-[1.5rem] px-3 py-2 sm:px-4 sm:py-3 border border-solid border-white text-white hover:scale-105 transition-transform;
+    @apply rounded-[1.5rem] border border-solid border-white px-3 py-2 text-white transition-transform hover:scale-105 sm:px-4 sm:py-3;
   }
 
   .search-form {
-    @apply relative w-full flex-1 flex items-center transition-transform ease-linear;
+    @apply relative flex w-full flex-1 items-center transition-transform ease-linear;
   }
 
   .search-input {

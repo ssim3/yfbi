@@ -5,13 +5,12 @@ import Link from "next/link";
 import { Heart } from "lucide-react";
 import { Author, Idea } from "@/sanity.types";
 
-
-export type IdeaCardType = Omit<Idea, "author"> & { author? : Author };
+export type IdeaCardType = Omit<Idea, "author"> & { author?: Author };
 
 const IdeaCard = ({ post }: { post: IdeaCardType }) => {
   const {
     _createdAt,
-    title, 
+    title,
     image,
     description,
     likes,
@@ -36,13 +35,12 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
               <p className="hover:underline">{author?.name}</p>
             </Link>
           </div>
-          <div className="flex gap-2 items-center justify-end text-rose-500">
+          <div className="flex items-center justify-end gap-2 text-rose-500">
             <p>{likes}</p>
             <button className="transition-transform hover:scale-110">
               <Heart size={24} color="#f43f5e" />
             </button>
           </div>
-
         </div>
 
         <img src={image} alt={title} className="w-full object-cover" />
@@ -63,10 +61,12 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
       <div className="flex items-center justify-between p-5 text-gray-300">
         <p className="idea-card-subtext">{formatDate(_createdAt)}</p>
 
-        <Link href={`/?search=${category?.toLowerCase()}`} className="hover:underline hover:text-rose-500 transition-colors">
+        <Link
+          href={`/?search=${category?.toLowerCase()}`}
+          className="transition-colors hover:text-rose-500 hover:underline"
+        >
           <p className="">{category}</p>
         </Link>
-
       </div>
     </li>
   );

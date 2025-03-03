@@ -7,7 +7,7 @@ const Navbar = async () => {
   const session = await auth();
 
   return (
-    <header className="font-work-sans md:absolute left-0 top-0 w-full p-5 shadow-sm">
+    <header className="font-work-sans left-0 top-0 w-full p-5 shadow-sm md:absolute">
       <nav className="flex items-center justify-between">
         <Link href="/">
           <Image src="/logo.png" alt="logo" width={80} height={28} />
@@ -20,9 +20,14 @@ const Navbar = async () => {
               </Link>
 
               <Link className="hover:underline" href={`/user/${session?.id}`}>
-                <Image className="rounded-full" src={session?.user?.image} alt="Profile Picture" width={45} height={45} />
+                <Image
+                  className="rounded-full"
+                  src={session?.user?.image}
+                  alt="Profile Picture"
+                  width={45}
+                  height={45}
+                />
               </Link>
-
             </>
           ) : (
             <form
