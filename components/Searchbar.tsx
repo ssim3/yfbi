@@ -2,7 +2,7 @@ import React from "react";
 import Form from "next/form";
 import { Search } from "lucide-react";
 
-const Searchbar = ({ query }: { query?: string }) => {
+const Searchbar = ({ query }: { query?: string | string[] | undefined }) => {
   return (
     <Form action={"/"} scroll={false} className="search-form">
       <input

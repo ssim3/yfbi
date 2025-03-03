@@ -10,14 +10,15 @@
     @apply font-gagalin-sans sm:text-3xl md:text-6xl;
   }
   .buttonPrimary {
-    @apply min-w-[110px] rounded-[1.5rem] bg-white px-3 py-2 text-black transition-transform ease-linear hover:scale-105;
+    @apply rounded-[1.5rem] bg-white px-4 py-3 text-black transition-transform ease-linear hover:scale-105;
   }
+
   .buttonSecondary {
-    @apply rounded-[1.5rem] border border-solid border-white px-3 py-2 text-white;
+    @apply rounded-[1.5rem] border border-solid border-white px-4 py-3 text-white hover:scale-105 transition-transform;
   }
 
   .search-form {
-    @apply relative flex min-w-[110px] items-center transition-transform ease-linear hover:scale-105;
+    @apply relative w-full flex-1 flex items-center transition-transform ease-linear;
   }
 
   .search-input {

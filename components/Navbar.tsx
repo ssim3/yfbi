@@ -15,24 +15,14 @@ const Navbar = async () => {
         <div className="flex items-center gap-10 text-white">
           {session && session.user ? (
             <>
-              <Link href="/idea/create">
+              <Link className="hover:underline" href="/idea/create">
                 <span>Create Idea</span>
               </Link>
 
-              <Link href={`/user/${session?.id}`}>
-                <span>{session?.user?.name}</span>
+              <Link className="hover:underline" href={`/user/${session?.id}`}>
+                <Image className="rounded-full" src={session?.user?.image} alt="Profile Picture" width={45} height={45} />
               </Link>
 
-              <form
-                action={async () => {
-                  "use server";
-                  await signOut({ redirectTo: "/" });
-                }}
-              >
-                <button className="rounded-[1em] border-none bg-rose-500 px-3 pb-2 pt-1">
-                  Logout
-                </button>
-              </form>
             </>
           ) : (
             <form

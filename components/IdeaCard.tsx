@@ -3,15 +3,20 @@ import React from "react";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { Heart } from "lucide-react";
+import { Author, Idea } from "@/sanity.types";
+
+
+export type IdeaCardType = Omit<Idea, "author"> & { author? : Author };
 
 const IdeaCard = ({ post }: { post: IdeaCardType }) => {
   const {
     _createdAt,
-    title,
+    title, 
     image,
     description,
+    likes,
     category,
-    author: { _id: authorId, name, image: profile_img },
+    author,
     slug,
   } = post;
 
@@ -21,23 +26,27 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
         <div className="flex items-center justify-between gap-3 p-3">
           <div className="flex items-center gap-3">
             <img
-              src={profile_img}
+              src={author?.image}
               alt="Profile Picture"
               className="h-8 w-8 rounded-full object-cover"
             />
-            <Link href={`users/${authorId}`}>
-              <p className="hover:underline">{name}</p>
+            <Link href={`users/${author?._id}`}>
+              <p className="hover:underline">{author?.name}</p>
             </Link>
           </div>
-          <button className="transition-transform hover:scale-110">
-            <Heart size={24} color="#f43f5e" />
-          </button>
+          <div className="flex gap-2 items-center justify-end text-[#f43f5e]">
+            <p>{likes}</p>
+            <button className="transition-transform hover:scale-110">
+              <Heart size={24} color="#f43f5e" />
+            </button>
+          </div>
+
         </div>
 
         <img src={image} alt={title} className="w-full object-cover" />
 
         <div className="flex flex-col gap-2 p-5 pb-0">
-          <Link href={`/idea/${slug.current}`}>
+          <Link href={`/idea/${slug?.current}`}>
             <h3
               id="title"
               className="!text-xl font-bold transition-colors ease-in-out hover:text-rose-500 hover:underline"
@@ -52,7 +61,10 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
       <div className="flex items-center justify-between p-5 text-gray-300">
         <p className="idea-card-subtext">{formatDate(_createdAt)}</p>
 
-        <p className="">{category}</p>
+        <Link href={`/query=${category?.toLowerCase()}`} className="hover:underline">
+          <p className="">{category}</p>
+        </Link>
+
       </div>
     </li>
   );
