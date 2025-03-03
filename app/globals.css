@@ -7,14 +7,14 @@
     @apply flex h-screen flex-col items-center justify-center gap-5 p-5 text-center;
   }
   .header {
-    @apply font-gagalin-sans sm:text-3xl md:text-6xl;
+    @apply sm:w-full md:w-2/3 font-gagalin-sans text-3xl sm:text-4xl  md:text-5xl lg:text-6xl transition-transform;
   }
   .buttonPrimary {
-    @apply rounded-[1.5rem] bg-white px-4 py-3 text-black transition-transform ease-linear hover:scale-105;
+    @apply rounded-[1.5rem] px-3 py-2 sm:px-4 sm:py-3 bg-white text-black transition-transform ease-linear hover:scale-105;
   }
 
   .buttonSecondary {
-    @apply rounded-[1.5rem] border border-solid border-white px-4 py-3 text-white hover:scale-105 transition-transform;
+    @apply rounded-[1.5rem] px-3 py-2 sm:px-4 sm:py-3 border border-solid border-white text-white hover:scale-105 transition-transform;
   }
 
   .search-form {
