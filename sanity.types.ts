@@ -186,8 +186,52 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: idea_query
-// Query: *[_type == "idea" && defined(slug.current)] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, image, author -> { _id, name, image }}
-export type Idea_queryResult = Array<{
+// Query: *[_type == "idea" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search ] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, image }}
+export type Idea_queryResult = Array<
+  | {
+      _id: string;
+      title: null;
+      slug: null;
+      _createdAt: string;
+      likes: null;
+      description: null;
+      pitch: null;
+      category: null;
+      image: string | null;
+      author: null;
+    }
+  | {
+      _id: string;
+      title: string | null;
+      slug: null;
+      _createdAt: string;
+      likes: null;
+      description: string | null;
+      pitch: null;
+      category: null;
+      image: null;
+      author: null;
+    }
+  | {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+      _createdAt: string;
+      likes: number | null;
+      description: string | null;
+      pitch: string | null;
+      category: string | null;
+      image: string | null;
+      author: {
+        _id: string;
+        name: string | null;
+        image: string | null;
+      } | null;
+    }
+>;
+// Variable: idea_by_id_query
+// Query: *[_type == "idea" && _id == $id ][0] {     _id,     title,     slug,     _createdAt,     likes,     description,     pitch,     category,     image,     author -> { _id, name, image }}
+export type Idea_by_id_queryResult = {
   _id: string;
   title: string | null;
   slug: Slug | null;
@@ -195,18 +239,20 @@ export type Idea_queryResult = Array<{
   likes: number | null;
   description: string | null;
   pitch: string | null;
+  category: string | null;
   image: string | null;
   author: {
     _id: string;
     name: string | null;
     image: string | null;
   } | null;
-}>;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    ' *[_type == "idea" && defined(slug.current)] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, image, author -> { _id, name, image }} \n\n    ': Idea_queryResult;
+    ' *[_type == "idea" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search ] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, image }} \n\n    ': Idea_queryResult;
+    '*[_type == "idea" && _id == $id ][0] { \n    _id, \n    title, \n    slug, \n    _createdAt, \n    likes, \n    description, \n    pitch, \n    category, \n    image, \n    author -> { _id, name, image }\n}': Idea_by_id_queryResult;
   }
 }

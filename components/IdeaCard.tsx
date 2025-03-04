@@ -9,6 +9,7 @@ export type IdeaCardType = Omit<Idea, "author"> & { author?: Author };
 
 const IdeaCard = ({ post }: { post: IdeaCardType }) => {
   const {
+    _id,
     _createdAt,
     title,
     image,
@@ -46,7 +47,7 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
         <img src={image} alt={title} className="w-full object-cover" />
 
         <div className="flex flex-col gap-2 p-5 pb-0">
-          <Link href={`/idea/${slug?.current}`}>
+          <Link href={`/idea/${_id}`}>
             <h3
               id="title"
               className="!text-xl font-bold transition-colors ease-in-out hover:text-rose-500 hover:underline"
