@@ -38,9 +38,7 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
           </div>
           <div className="flex items-center justify-end gap-2 text-rose-500">
             <p>{likes}</p>
-            <button className="transition-transform hover:scale-110">
-              <Heart size={24} color="#f43f5e" />
-            </button>
+            <Heart size={24} color="#f43f5e" />
           </div>
         </div>
 

@@ -5,10 +5,13 @@ import { idea_by_id_query } from "@/sanity/lib/queries";
 import { Heart, Share } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 
 import markdownit from "markdown-it";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
+import Likes from "@/components/Likes";
 
 const md = markdownit();
 
@@ -27,14 +30,14 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     <>
       <section className="m-auto flex min-h-80 max-w-5xl flex-col justify-center gap-10 p-10">
         {/* Heading Title   */}
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-7">
           <div
             id="#heading"
             className="flex flex-wrap items-end justify-between gap-5"
           >
             <h1 className="text-5xl font-bold text-rose-500">{post.title}</h1>
             <Link href={`/?search=${post.category}`}>
-              <p className="text-sm font-bold italic">{post.category}</p>
+              <p className="font-bold hover:underline">{post.category}</p>
             </Link>
           </div>
 
@@ -46,9 +49,12 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
               width={36}
               height={36}
             />
-            <div>
-              <p className="text-sm text-gray-500">
-                Posted by {post.author?.name}, at {post._createdAt}
+            <div className="flex flex-col">
+              <p className="text-sm">
+                {post.author?.name}
+              </p>
+              <p className="text-[12px] text-gray-500">
+                {formatDate(post._createdAt)}
               </p>
             </div>
           </div>
@@ -84,7 +90,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div>
           <h2 className="mb-5 text-2xl text-rose-500">Pitch</h2>
           {parsedContent ? (
-            <article
+            <article className="prose"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             ></article>
           ) : (
@@ -92,6 +98,10 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           )}
         </div>
       </section>
+
+      <Suspense fallback={<Skeleton className="view_skeleton" />}>
+          <Likes id={id} />
+      </Suspense>
 
       {/* TO BE IMPLEMENTED
       <section className="m-auto flex max-w-5xl flex-col justify-center gap-10 p-10">
