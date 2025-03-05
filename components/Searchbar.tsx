@@ -9,7 +9,7 @@ const Searchbar = ({ query }: { query?: string | string[] | undefined }) => {
         name="search"
         defaultValue={query}
         className="search-input"
-        placeholder="Browse Ideas"
+        placeholder="Another ChatGPT Wrapper..."
       />
 
       <button type="submit" className="search-btn">

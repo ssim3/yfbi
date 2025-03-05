@@ -247,6 +247,11 @@ export type Idea_by_id_queryResult = {
     image: string | null;
   } | null;
 } | null;
+// Variable: likes_by_id
+// Query: *[_type == "idea" && _id == $id ][0] {     likes}
+export type Likes_by_idResult = {
+  likes: number | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -254,5 +259,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     ' *[_type == "idea" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search ] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, image }} \n\n    ': Idea_queryResult;
     '*[_type == "idea" && _id == $id ][0] { \n    _id, \n    title, \n    slug, \n    _createdAt, \n    likes, \n    description, \n    pitch, \n    category, \n    image, \n    author -> { _id, name, image }\n}': Idea_by_id_queryResult;
+    '*[_type == "idea" && _id == $id ][0] { \n    likes\n}': Likes_by_idResult;
   }
 }

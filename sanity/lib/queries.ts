@@ -19,7 +19,18 @@ export const idea_by_id_query =
     author -> { _id, name, image }
 }`);
 
-export const likes_by_id =
-  defineQuery(`*[_type == "idea" && _id == $id ][0] { 
+export const likes_by_id = defineQuery(`*[_type == "idea" && _id == $id ][0] { 
     likes
 }`);
+
+export const author_by_github_id = defineQuery(`
+  *[_type == "author" && id == $id][0] {
+    _id,
+    id,
+    name,
+    username,
+    email,
+    image,
+    bio
+  }
+`)

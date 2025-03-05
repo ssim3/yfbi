@@ -1,19 +1,21 @@
-import { client } from '@/sanity/lib/client'
-import { likes_by_id } from '@/sanity/lib/queries'
-import { Flame } from 'lucide-react'
-import { notFound } from 'next/navigation'
-import React from 'react'
+import { client } from "@/sanity/lib/client";
+import { likes_by_id } from "@/sanity/lib/queries";
+import { Flame } from "lucide-react";
+import React from "react";
 
-const Likes = async ({id} : {id : string}) => {
-  
-    const { likes } = await client.fetch(likes_by_id, { id })
-  
-    return (
-    <div className='relative'>
-        <Flame color='#f43f5e' size={44} />
-        <span className='absolute top-0 left-5 bg-rose-500 w-10 h-10 rounded-full'>{likes}</span>           
+// TODO: Update likes whenever likes gets updated
+
+const Likes = async ({ id }: { id: string }) => {
+  const { likes } = await client
+    .withConfig({ useCdn: false })
+    .fetch(likes_by_id, { id });
+
+  return (
+    <div className="opacity-30 hover:opacity-100 transition-opacity fixed bottom-5 left-5 flex w-16 items-center justify-center gap-2">
+      <Flame color="#f43f5e" size={44} />
+      <span className="text-center text-lg font-bold text-rose-500">{likes}</span>
     </div>
-  )
-}
+  );
+};
 
-export default Likes  
+export default Likes

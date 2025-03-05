@@ -4,10 +4,10 @@
 
 @layer utilities {
   .heading {
-    @apply flex h-screen flex-col items-center justify-center gap-5 p-5 text-center;
+    @apply flex h-screen flex-col items-center justify-center gap-5 p-10 text-center;
   }
   .header {
-    @apply font-gagalin-sans text-3xl transition-transform sm:w-full sm:text-4xl md:w-2/3 md:text-5xl lg:text-6xl;
+    @apply font-gagalin-sans text-5xl transition-transform sm:w-full md:w-4/5 md:text-6xl;
   }
   .buttonPrimary {
     @apply rounded-[1.5rem] bg-white px-3 py-2 text-black transition-transform ease-linear hover:scale-105 sm:px-4 sm:py-3;

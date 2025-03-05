@@ -12,6 +12,8 @@ import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import Likes from "@/components/Likes";
+import { write } from "fs";
+import { writeClient } from "@/sanity/lib/write-client";
 
 const md = markdownit();
 
@@ -24,7 +26,13 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   if (!post) return notFound();
 
+  // The Markdown Pitch parsed as HTML
   const parsedContent = md.render(post?.pitch || "");
+
+  // Likes Functionality
+  const handleLike = async () => {
+    await writeClient.patch(id).inc({ likes: 1 }).commit();
+  }
 
   return (
     <>
@@ -46,13 +54,11 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="rounded-full"
               src={post?.author?.image}
               alt="Author Profile Picture"
-              width={36}
-              height={36}
+              width={44}
+              height={44}
             />
             <div className="flex flex-col">
-              <p className="text-sm">
-                {post.author?.name}
-              </p>
+              <p className="text-md">{post.author?.name}</p>
               <p className="text-[12px] text-gray-500">
                 {formatDate(post._createdAt)}
               </p>
@@ -63,17 +69,19 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         {/* Banner and Interactions   */}
         <div className="flex flex-col flex-wrap items-center justify-between gap-16 md:flex-row">
           <img
-            className="w-full max-w-md rounded-2xl object-cover"
+            className="w-full max-w-md rounded-2xl object-cover aspect-[3/2]"
             src={post?.image}
             alt="Idea Image"
             style={{
               aspectRatio: "3/2",
+              boxShadow: "1rem 1rem #4c0519",
             }}
           />
           <div className="flex flex-1 flex-col gap-10">
             <p className="text-center">{post.description}</p>
             <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-10">
-              <button className="flex w-1/2 max-w-40 items-center justify-center gap-2 rounded-3xl bg-rose-500 px-4 py-3 transition-transform hover:scale-105">
+              <button
+                className="flex w-1/2 max-w-40 items-center justify-center gap-2 rounded-3xl bg-rose-500 px-4 py-3 transition-transform hover:scale-105">
                 Like
                 <Heart width={20} />
               </button>
@@ -90,7 +98,8 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div>
           <h2 className="mb-5 text-2xl text-rose-500">Pitch</h2>
           {parsedContent ? (
-            <article className="prose"
+            <article
+              className="prose"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             ></article>
           ) : (
@@ -100,7 +109,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
       </section>
 
       <Suspense fallback={<Skeleton className="view_skeleton" />}>
-          <Likes id={id} />
+        <Likes id={id} />
       </Suspense>
 
       {/* TO BE IMPLEMENTED

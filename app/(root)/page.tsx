@@ -18,8 +18,7 @@ const Home = async ({
         <h1 className="header">
           Your{" "}
           <span className="line-through decoration-rose-500">Horrible</span>{" "}
-          <span className="text-rose-500">Fantastic</span> Business Ideas, All
-          in One Platform.
+          <span className="text-rose-500">Fantastic</span><br></br> Business Ideas
         </h1>
         <p className="hidden sm:block">
           YFBI. is an all-in-one platform designed for creative thinkers <br />
@@ -35,7 +34,7 @@ const Home = async ({
       </section>
 
       <section id="ideas-container" className="ideas-container">
-        <div className="mb-16 flex flex-col items-center gap-10 sm:flex-row-reverse">
+        <div className="mb-16 flex flex-col-reverse items-center gap-10 sm:flex-row-reverse">
           <Searchbar query={query} />
           <p className="flex-1 text-lg">
             {query ? `Showing search results for "${query}"` : "Browse Ideas"}
