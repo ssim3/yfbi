@@ -4,6 +4,7 @@ import Image from "next/image";
 import { auth, signIn, signOut } from "@/auth";
 
 const Navbar = async () => {
+  
   const session = await auth();
 
   return (

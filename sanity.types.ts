@@ -252,6 +252,17 @@ export type Idea_by_id_queryResult = {
 export type Likes_by_idResult = {
   likes: number | null;
 } | null;
+// Variable: author_by_github_id
+// Query: *[_type == "author" && id == $id][0] {    _id,    id,    name,    username,    email,    image,    bio  }
+export type Author_by_github_idResult = {
+  _id: string;
+  id: number | null;
+  name: string | null;
+  username: string | null;
+  email: string | null;
+  image: string | null;
+  bio: string | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -260,5 +271,6 @@ declare module "@sanity/client" {
     ' *[_type == "idea" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search ] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, image }} \n\n    ': Idea_queryResult;
     '*[_type == "idea" && _id == $id ][0] { \n    _id, \n    title, \n    slug, \n    _createdAt, \n    likes, \n    description, \n    pitch, \n    category, \n    image, \n    author -> { _id, name, image }\n}': Idea_by_id_queryResult;
     '*[_type == "idea" && _id == $id ][0] { \n    likes\n}': Likes_by_idResult;
+    '\n  *[_type == "author" && id == $id][0] {\n    _id,\n    id,\n    name,\n    username,\n    email,\n    image,\n    bio\n  }\n': Author_by_github_idResult;
   }
 }

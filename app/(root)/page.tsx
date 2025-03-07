@@ -2,6 +2,7 @@ import Searchbar from "@/components/Searchbar";
 import IdeaCard, { IdeaCardType } from "@/components/IdeaCard";
 import { idea_query } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 
 const Home = async ({
   searchParams,
@@ -10,6 +11,8 @@ const Home = async ({
 }) => {
   const query = (await searchParams).search || "";
   const params = { search: query || null };
+
+  // Get posts with Sanity Live
   const { data: posts } = await sanityFetch({ query: idea_query, params });
 
   return (
