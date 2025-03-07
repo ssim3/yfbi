@@ -1,19 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-
-
   experimental: {
     ppr: "incremental",
   },
   devIndicators: {
     position: "bottom-right",
   },
-
 };
 
 module.exports = {
-
   images: {
     remotePatterns: [
       {
@@ -23,7 +19,7 @@ module.exports = {
       {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
-      }
+      },
     ],
   },
 
@@ -32,6 +28,6 @@ module.exports = {
     AUTH_SECRET: process.env.AUTH_SECRET,
     AUTH_GITHUB_ID: process.env.AUTH_GITHUB_ID,
   },
-}
+};
 
 export default nextConfig;

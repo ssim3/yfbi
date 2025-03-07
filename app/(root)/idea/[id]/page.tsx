@@ -32,7 +32,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   // Likes Functionality
   const handleLike = async () => {
     await writeClient.patch(id).inc({ likes: 1 }).commit();
-  }
+  };
 
   return (
     <>
@@ -69,7 +69,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         {/* Banner and Interactions   */}
         <div className="flex flex-col flex-wrap items-center justify-between gap-16 md:flex-row">
           <img
-            className="w-full max-w-md rounded-2xl object-cover aspect-[3/2]"
+            className="aspect-[3/2] w-full max-w-md rounded-2xl object-cover"
             src={post?.image}
             alt="Idea Image"
             style={{
@@ -80,8 +80,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           <div className="flex flex-1 flex-col gap-10">
             <p className="text-center">{post.description}</p>
             <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-10">
-              <button
-                className="flex w-1/2 max-w-40 items-center justify-center gap-2 rounded-3xl bg-rose-500 px-4 py-3 transition-transform hover:scale-105">
+              <button className="flex w-1/2 max-w-40 items-center justify-center gap-2 rounded-3xl bg-rose-500 px-4 py-3 transition-transform hover:scale-105">
                 Like
                 <Heart width={20} />
               </button>

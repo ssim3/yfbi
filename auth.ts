@@ -8,27 +8,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub],
   callbacks: {
     async signIn({ user, account, profile }) {
-      const existingUser = await client.fetch(author_by_github_id, { id : profile?.id} )
+      const existingUser = await client.fetch(author_by_github_id, {
+        id: profile?.id,
+      });
 
       if (!existingUser) {
         await writeClient.create({
           _type: "author",
-          id : profile?.id,
+          id: profile?.id,
           name: user?.name,
           username: profile?.login,
           email: user?.email,
-          image : user?.image,
-          bio : profile?.bio || ``
-        })
+          image: user?.image,
+          bio: profile?.bio || ``,
+        });
       }
 
       return true;
-
     },
 
     async jwt({ token, account, profile }) {
       if (account && profile) {
-        const user = await client.fetch(author_by_github_id, {id : profile?.id });
+        const user = await client.fetch(author_by_github_id, {
+          id: profile?.id,
+        });
 
         token.id = user?._id;
       }
@@ -36,9 +39,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token;
     },
 
-    async session({session, token}) {
-      Object.assign(session, {id : token.id });
+    async session({ session, token }) {
+      Object.assign(session, { id: token.id });
       return session;
-    }
-  }
+    },
+  },
 });

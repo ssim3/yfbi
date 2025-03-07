@@ -21,7 +21,8 @@ const Home = async ({
         <h1 className="header">
           Your{" "}
           <span className="line-through decoration-rose-500">Horrible</span>{" "}
-          <span className="text-rose-500">Fantastic</span><br></br> Business Ideas
+          <span className="text-rose-500">Fantastic</span>
+          <br></br> Business Ideas
         </h1>
         <p className="hidden sm:block">
           YFBI. is an all-in-one platform designed for creative thinkers <br />

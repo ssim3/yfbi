@@ -33,4 +33,4 @@ export const author_by_github_id = defineQuery(`
     image,
     bio
   }
-`)
+`);
