@@ -15,7 +15,7 @@ const Navbar = async () => {
         <div className="flex items-center gap-10 text-white">
           {session && session.user ? (
             <>
-              <Link className="hover:underline" href="/idea/create">
+              <Link className="hover:underline" href="/create">
                 <span>Create Idea</span>
               </Link>
 

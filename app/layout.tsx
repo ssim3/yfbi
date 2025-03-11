@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "easymde/dist/easymde.min.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const gagalinSans = localFont({
   src: [
@@ -82,6 +83,7 @@ export default function RootLayout({
         className={`${lexendSans.variable} ${gagalinSans.variable} relative antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

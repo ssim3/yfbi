@@ -12,7 +12,6 @@ const Create = () => {
             got this time
           </p>
         </div>
-
         <IdeaForm />
       </section>
     </>
