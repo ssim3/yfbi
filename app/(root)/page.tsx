@@ -24,12 +24,12 @@ const Home = async ({
           <span className="text-rose-500">Fantastic</span>
           <br></br> Business Ideas
         </h1>
-        <p className="hidden sm:block">
-          YFBI. is an all-in-one platform designed for creative thinkers <br />
+        <p className="sm:block max-w-full sm:max-w-[60%]">
+          YFBI. is an all-in-one platform designed for creative thinkers
           to have a public space to journal random business ideas that pop up in
           their head
         </p>
-        <div className="my-5 flex flex-wrap items-center justify-center gap-10">
+        <div className="my-2 flex flex-wrap items-center justify-center gap-10">
           <button className="buttonPrimary">
             <a href="#ideas-container">Browse Ideas</a>
           </button>

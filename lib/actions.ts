@@ -12,9 +12,15 @@ export const createIdea = async (state: any, form: FormData, pitch: string) => {
       JSON.stringify({ error: "Not signed in!", status: "ERROR" }),
     );
 
-  const { title, description, category, link } = Object.entries(
+  const fields = Object.fromEntries(
     Array.from(form).filter(([key]) => key != "pitch"),
   );
+
+  console.log(fields);
+
+  const { title, description, category, link } = fields;
+
+  console.log(title as string);
 
   const slug = slugify(title as string, { lower: true, strict: true });
 

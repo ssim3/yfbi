@@ -6,7 +6,7 @@ import { Send } from "lucide-react";
 import { formSchema } from "@/lib/validation";
 import { z } from "zod";
 import { toast } from "sonner";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { createIdea } from "@/lib/actions";
 
 const IdeaForm = () => {
@@ -28,8 +28,6 @@ const IdeaForm = () => {
 
       await formSchema.parseAsync(formValues);
 
-      console.log(formValues);
-
       const result = await createIdea(prevState, formData, pitch);
 
       if (result.status == "SUCCESS") {
@@ -38,7 +36,7 @@ const IdeaForm = () => {
         });
       }
 
-      router.push(`/idea/${result.id}`);
+      router.push(`/idea/${result._id}`);
 
       return result;
     } catch (error) {
@@ -146,6 +144,7 @@ const IdeaForm = () => {
           style={{
             borderRadius: "1.5rem",
             background: "transparent",
+            color: "white",
             border: "solid 1px #6b7280",
             padding: "5px",
           }}

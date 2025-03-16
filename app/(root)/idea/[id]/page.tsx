@@ -12,10 +12,9 @@ import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import Likes from "@/components/Likes";
-import { write } from "fs";
 import { writeClient } from "@/sanity/lib/write-client";
 
-const md = markdownit();
+const md = markdownit({breaks : true});
 
 export const experimental_ppr = true;
 
