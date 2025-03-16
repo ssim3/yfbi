@@ -6,6 +6,7 @@ import { client } from "./sanity/lib/client";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub],
+  secret: process.env.SECRET,
   callbacks: {
     async signIn({ user, account, profile }) {
       const existingUser = await client.fetch(author_by_github_id, {
