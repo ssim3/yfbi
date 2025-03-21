@@ -34,3 +34,20 @@ export const author_by_github_id = defineQuery(`
     bio
   }
 `);
+
+export const author_by_id = defineQuery(`
+  *[_type == "author" && _id == $id][0] {
+    _id,
+    id,
+    name,
+    username,
+    email,
+    image,
+    bio
+  }
+`);
+
+export const idea_by_author_query =
+  defineQuery(` *[_type == "idea" && author._ref == $id] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, image }} 
+
+    `);

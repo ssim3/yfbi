@@ -24,10 +24,10 @@ const Home = async ({
           <span className="text-rose-500">Fantastic</span>
           <br></br> Business Ideas
         </h1>
-        <p className="sm:block max-w-full sm:max-w-[60%]">
-          YFBI. is an all-in-one platform designed for creative thinkers
-          to have a public space to journal random business ideas that pop up in
-          their head
+        <p className="max-w-full sm:block sm:max-w-[60%]">
+          YFBI. is an all-in-one platform designed for creative thinkers to have
+          a public space to journal random business ideas that pop up in their
+          head
         </p>
         <div className="my-2 flex flex-wrap items-center justify-center gap-10">
           <button className="buttonPrimary">
@@ -45,7 +45,7 @@ const Home = async ({
           </p>
         </div>
 
-        <ul className="card-grid mt-7">
+        <ul className="mt-7 grid items-start gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {posts?.length > 0 ? (
             posts?.map((post: IdeaCardType) => (
               <IdeaCard key={post?._id} post={post} />

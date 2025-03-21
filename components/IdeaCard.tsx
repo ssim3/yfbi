@@ -23,7 +23,7 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
   console.log(category);
 
   return (
-    <li className="idea-card text-sm">
+    <li className="flex flex-col justify-between rounded-xl border border-white shadow-lime-400 transition-all duration-200 ease-in hover:z-10 hover:bg-[#181818] hover:shadow-2xl text-sm">
       <div>
         <div className="flex items-center justify-between gap-3 p-3">
           <div className="flex items-center gap-3">

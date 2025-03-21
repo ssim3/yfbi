@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Likes from "@/components/Likes";
 import { writeClient } from "@/sanity/lib/write-client";
 
-const md = markdownit({breaks : true});
+const md = markdownit({ html: true, breaks: true });
 
 export const experimental_ppr = true;
 
@@ -25,8 +25,12 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   if (!post) return notFound();
 
+  console.log(post.pitch);
+
   // The Markdown Pitch parsed as HTML
   const parsedContent = md.render(post?.pitch || "");
+
+  console.log(parsedContent);
 
   // Likes Functionality
   const handleLike = async () => {
@@ -97,7 +101,6 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           <h2 className="mb-5 text-2xl text-rose-500">Pitch</h2>
           {parsedContent ? (
             <article
-              className="prose"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             ></article>
           ) : (
