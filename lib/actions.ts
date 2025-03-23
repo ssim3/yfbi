@@ -3,6 +3,7 @@
 import { auth } from "@/auth";
 import slugify from "slugify";
 import { writeClient } from "@/sanity/lib/write-client";
+import { client } from "@/sanity/lib/client";
 
 export const createIdea = async (state: any, form: FormData, pitch: string) => {
   const session = await auth();
@@ -57,3 +58,9 @@ export const createIdea = async (state: any, form: FormData, pitch: string) => {
     );
   }
 };
+
+export async function incrementLikes(_id  : string) {
+  const result = client.patch(_id).inc({likes: 1}).commit().then((result) => {
+    console.log(`Yay! new results: ${result}`)
+  });
+}

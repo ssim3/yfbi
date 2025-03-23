@@ -2,7 +2,6 @@ import Searchbar from "@/components/Searchbar";
 import IdeaCard, { IdeaCardType } from "@/components/IdeaCard";
 import { idea_query } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
-import { auth } from "@/auth";
 
 const Home = async ({
   searchParams,
@@ -18,7 +17,7 @@ const Home = async ({
   return (
     <>
       <section className="heading">
-        <h1 className="header">
+        <h1 className="font-gagalin-sans text-6xl transition-transform sm:w-full sm:text-7xl md:w-4/5">
           Your{" "}
           <span className="line-through decoration-rose-500">Horrible</span>{" "}
           <span className="text-rose-500">Fantastic</span>
@@ -45,7 +44,7 @@ const Home = async ({
           </p>
         </div>
 
-        <ul className="mt-7 grid items-start gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <ul className="mt-7 columns-2 break-inside-avoid gap-5 space-y-5 md:columns-3 xl:columns-4">
           {posts?.length > 0 ? (
             posts?.map((post: IdeaCardType) => (
               <IdeaCard key={post?._id} post={post} />

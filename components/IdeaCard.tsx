@@ -17,13 +17,12 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
     likes,
     category,
     author,
-    slug,
   } = post;
 
   console.log(category);
 
   return (
-    <li className="flex flex-col justify-between rounded-xl border border-white shadow-lime-400 transition-all duration-200 ease-in hover:z-10 hover:bg-[#181818] hover:shadow-2xl text-sm">
+    <li className="flex break-inside-avoid flex-col justify-between rounded-xl border border-white text-sm shadow-lime-400 transition-all duration-200 ease-in hover:z-10 hover:bg-[#181818] hover:shadow-2xl">
       <div>
         <div className="flex items-center justify-between gap-3 p-3">
           <div className="flex items-center gap-3">
@@ -32,8 +31,8 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
               alt="Profile Picture"
               className="h-8 w-8 rounded-full object-cover"
             />
-            <Link href={`users/${author?._id}`}>
-              <p className="hover:underline">{author?.name}</p>
+            <Link href={`user/${author?._id}`}>
+              <p className="hover:underline">{author?.username}</p>
             </Link>
           </div>
           <div className="flex items-center justify-end gap-2 text-rose-500">

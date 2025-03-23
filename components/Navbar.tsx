@@ -2,6 +2,13 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { auth, signIn, signOut } from "@/auth";
+import {
+  BadgePlus,
+  BadgePlusIcon,
+  LogOut,
+  LogOutIcon,
+  Plus,
+} from "lucide-react";
 
 const Navbar = async () => {
   const session = await auth();
@@ -16,7 +23,9 @@ const Navbar = async () => {
           {session && session.user ? (
             <>
               <Link className="hover:underline" href="/create">
-                <span>Create Idea</span>
+                <button className="rounded-3xl border border-white-100 px-3 py-2 transition-all duration-500 hover:scale-105 hover:border-none hover:bg-rose-500">
+                  Create Idea
+                </button>
               </Link>
 
               <Link className="hover:underline" href={`/user/${session?.id}`}>
@@ -28,6 +37,21 @@ const Navbar = async () => {
                   height={45}
                 />
               </Link>
+
+              <form
+                action={async () => {
+                  "use server";
+                  await signOut();
+                }}
+                className="h-[30px] w-[30px]"
+              >
+                <button className="flex gap-5">
+                  <LogOut
+                    size={30}
+                    className="text-white transition-colors hover:text-rose-500"
+                  />
+                </button>
+              </form>
             </>
           ) : (
             <form
