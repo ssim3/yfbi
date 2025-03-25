@@ -48,7 +48,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             <Link href={`/user/${post?.author?._id}`}>
               <Image
                 className="rounded-full"
-                src={post?.author?.image}
+                src={post?.author?.image || ""}
                 alt="Author Profile Picture"
                 width={44}
                 height={44}
