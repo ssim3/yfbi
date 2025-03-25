@@ -32,7 +32,9 @@ const Home = async ({
           <button className="buttonPrimary">
             <a href="#ideas-container">Browse Ideas</a>
           </button>
-          <button className="buttonSecondary">Share Ideas</button>
+          <button className="buttonSecondary">
+            <a href="/create">Share Ideas</a>
+          </button>
         </div>
       </section>
 
@@ -44,7 +46,7 @@ const Home = async ({
           </p>
         </div>
 
-        <ul className="mt-7 columns-2 break-inside-avoid gap-5 space-y-5 md:columns-3 xl:columns-4">
+        <ul className="mt-7 columns-1 sm:columns-2 break-inside-avoid gap-5 space-y-5 md:columns-3 xl:columns-4">
           {posts?.length > 0 ? (
             posts?.map((post: IdeaCardType) => (
               <IdeaCard key={post?._id} post={post} />

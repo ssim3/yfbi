@@ -273,7 +273,7 @@ export type Author_by_idResult = {
   bio: string | null;
 } | null;
 // Variable: idea_by_author_query
-// Query: *[_type == "idea" && author._ref == $id] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, image }}
+// Query: *[_type == "idea" && author._ref == $id] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, username, image }}
 export type Idea_by_author_queryResult = Array<{
   _id: string;
   title: string | null;
@@ -287,6 +287,7 @@ export type Idea_by_author_queryResult = Array<{
   author: {
     _id: string;
     name: string | null;
+    username: string | null;
     image: string | null;
   } | null;
 }>;
@@ -303,7 +304,7 @@ declare module "@sanity/client" {
     '*[_type == "idea" && _id == $id ][0] { \n    likes\n}': Likes_by_idResult;
     '\n  *[_type == "author" && id == $id][0] {\n    _id,\n    id,\n    name,\n    username,\n    email,\n    image,\n    bio\n  }\n': Author_by_github_idResult;
     '\n  *[_type == "author" && _id == $id][0] {\n    _id,\n    id,\n    name,\n    username,\n    email,\n    image,\n    bio\n  }\n': Author_by_idResult;
-    ' *[_type == "idea" && author._ref == $id] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, image }} \n\n    ': Idea_by_author_queryResult;
+    ' *[_type == "idea" && author._ref == $id] | order(_createdAt, desc) { _id, title, slug, _createdAt, likes, description, pitch, category, image, author -> { _id, name, username, image }} \n\n    ': Idea_by_author_queryResult;
     'count(*[_type == "idea" && author._ref == $id])': Ideas_by_authorResult;
   }
 }

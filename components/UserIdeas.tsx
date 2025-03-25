@@ -7,7 +7,7 @@ const UserIdeas = async ({ id }: { id: string }) => {
   const ideas = await client.fetch(idea_by_author_query, { id });
 
   return (
-    <ul className="mt-10 grid grid-cols-1 items-start gap-5 md:grid-cols-2">
+    <ul className="mt-10 columns-1 sm:columns-2 break-inside-avoid space-y-5">
       {ideas?.length > 0 ? (
         ideas?.map((idea: IdeaCardType) => (
           <IdeaCard key={idea?._id} post={idea} />

@@ -2,7 +2,7 @@
 // /idea/id
 import { client } from "@/sanity/lib/client";
 import { idea_by_id_query } from "@/sanity/lib/queries";
-import { Heart, Share } from "lucide-react";
+import { Share } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
@@ -13,7 +13,6 @@ import { formatDate } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import Likes from "@/components/Likes";
 import { incrementLikes } from "@/lib/actions";
-import { toast } from "sonner";
 import LikeButton from "@/components/LikeButton";
 
 const md = markdownit();
