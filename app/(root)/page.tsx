@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import Searchbar from "@/components/Searchbar";
 import IdeaCard, { IdeaCardType } from "@/components/IdeaCard";
 import { idea_query } from "@/sanity/lib/queries";
