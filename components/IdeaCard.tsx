@@ -26,7 +26,7 @@ const IdeaCard = ({ post }: { post: IdeaCardType }) => {
         <div className="flex items-center justify-between gap-3 p-3">
           <div className="flex items-center gap-3">
             <img
-              src={author?.image || ""}
+              src={author?.image}
               alt="Profile Picture"
               className="h-8 w-8 rounded-full object-cover"
             />

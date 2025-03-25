@@ -23,8 +23,8 @@ const user = async ({ params }: { params: Promise<{ id: string }> }) => {
         {/* Profile Section */}
         <div className="flex flex-col items-center justify-center gap-5 text-center md:items-start md:justify-start md:text-left">
           <Image
-            src={user.image || ""}
-            alt={user.name || ""}
+            src={user.image}
+            alt={user.name}
             width={300}
             height={300}
             className="rounded-full"

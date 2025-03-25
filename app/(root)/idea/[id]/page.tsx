@@ -48,7 +48,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             <Link href={`/user/${post?.author?._id}`}>
               <Image
                 className="rounded-full"
-                src={post?.author?.image || ""}
+                src={post?.author?.image}
                 alt="Author Profile Picture"
                 width={44}
                 height={44}
@@ -73,7 +73,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className="flex flex-col flex-wrap items-center justify-between gap-16 md:flex-row">
           <Image
             className="aspect-[3/2] w-full max-w-md rounded-2xl object-cover"
-            src={post?.image || ""}
+            src={post?.image}
             alt="Idea Image"
             style={{
               aspectRatio: "3/2",
