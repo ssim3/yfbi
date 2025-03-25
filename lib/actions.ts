@@ -60,7 +60,7 @@ export const createIdea = async (state: any, form: FormData, pitch: string) => {
 };
 
 export async function incrementLikes(_id  : string) {
-  const result = client.patch(_id).inc({likes: 1}).commit().then((result) => {
+  client.patch(_id).inc({likes: 1}).commit().then((result) => {
     console.log(`Yay! new results: ${result}`)
   });
 }

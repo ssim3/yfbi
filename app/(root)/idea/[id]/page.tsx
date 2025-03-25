@@ -71,7 +71,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
         {/* Banner and Interactions   */}
         <div className="flex flex-col flex-wrap items-center justify-between gap-16 md:flex-row">
-          <img
+          <Image
             className="aspect-[3/2] w-full max-w-md rounded-2xl object-cover"
             src={post?.image}
             alt="Idea Image"

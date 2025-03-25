@@ -2,13 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { auth, signIn, signOut } from "@/auth";
-import {
-  BadgePlus,
-  BadgePlusIcon,
-  LogOut,
-  LogOutIcon,
-  Plus,
-} from "lucide-react";
+import { LogOut } from "lucide-react";
 
 const Navbar = async () => {
   const session = await auth();

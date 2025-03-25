@@ -8,9 +8,9 @@ const Create = () => {
         <div id="heading" className="flex flex-col gap-5 text-center">
           <h1 className="text-5xl text-rose-500">Submit Your Idea</h1>
           <p>
-            Let's see what <span className="line-through">stupid</span>{" "}
+            Let&apos;s see what <span className="line-through">stupid</span>{" "}
             <span className="italic text-rose-500">fantastic</span> idea your
-            brain's got this time
+            brain&apos;s got this time
           </p>
         </div>
         <IdeaForm />

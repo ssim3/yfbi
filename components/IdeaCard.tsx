@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
