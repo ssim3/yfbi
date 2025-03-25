@@ -25,7 +25,7 @@ const Navbar = async () => {
               <Link className="hover:underline" href={`/user/${session?.id}`}>
                 <Image
                   className="rounded-full"
-                  src={session?.user?.image}
+                  src={session?.user?.image || ""}
                   alt="Profile Picture"
                   width={45}
                   height={45}
