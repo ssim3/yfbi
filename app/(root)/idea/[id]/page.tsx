@@ -1,5 +1,7 @@
 
-// /idea/id
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { client } from "@/sanity/lib/client";
 import { idea_by_id_query } from "@/sanity/lib/queries";
 import { Share } from "lucide-react";

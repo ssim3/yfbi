@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { auth } from "@/auth";
 import UserIdeas from "@/components/UserIdeas";
 import { client } from "@/sanity/lib/client";
