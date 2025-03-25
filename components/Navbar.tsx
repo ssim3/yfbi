@@ -7,6 +7,8 @@ import { LogOut } from "lucide-react";
 const Navbar = async () => {
   const session = await auth();
 
+  const { image } = session.user;
+
   return (
     <header className="font-work-sans left-0 top-0 w-full p-5 shadow-sm">
       <nav className="flex items-center justify-between">
@@ -25,7 +27,7 @@ const Navbar = async () => {
               <Link className="hover:underline" href={`/user/${session?.id}`}>
                 <Image
                   className="rounded-full"
-                  src={session?.user?.image || ""}
+                  src={image}
                   alt="Profile Picture"
                   width={45}
                   height={45}
