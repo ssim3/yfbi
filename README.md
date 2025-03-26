@@ -1,7 +1,13 @@
 # YFBI - Your Fantastic Business Ideas
 
+![YFBI Landing](https://github.com/ssim3/yfbi/blob/master/yfbi-cover.png)
+
 ## Overview
-YFBI (Your Fantastic Business Ideas) is a platform for creative thinkers to publicly share and explore any unique business ideas that come into mind. The project was built using Next.js 15, Auth.js and Sanity CMS. It was built alongside <a href="https://www.youtube.com/watch?v=Zq5fmkH0T78&t=19180s&ab_channel=JavaScriptMastery">JavaScript Mastery's Next.js 15 Crash Course</a>, with my own spin of custom design and functionality enhancements.
+YFBI (Your Fantastic Business Ideas) is a platform for creative thinkers to publicly share and explore any unique business ideas that come into their minds. The project was built using Next.js 15, Auth.js and Sanity CMS. It was built alongside <a href="https://www.youtube.com/watch?v=Zq5fmkH0T78&t=19180s&ab_channel=JavaScriptMastery">JavaScript Mastery's Next.js 15 Crash Course</a>, with my own spin of custom design and functionality enhancements.
+
+## Accessing the Website
+
+You can visit the site <a href="https://yfbi.vercel.app/">here</a>. To log in, you'll need a GitHub account. Once logged in, you can create your own ideas by clicking the "Create Idea" button in the navbar. Alternatively, you can explore ideas submitted by other users. Each idea includes a pitch, and if you find an idea you like, you can give it a like.
 
 ## Tech Stack
 - <b>Framework:</b> Next.js 15
@@ -54,7 +60,7 @@ NEXT_PUBLIC_SANITY_PROJECT_ID=XXXXXXXXXXXXXXXXXXXXXX
 SANITY_API_WRITE_TOKEN=XXXXXXXXXXXXXXXXXXXXXX
 ```
 
-### Step 6: Run the development server
+### Step 7: Run the development server
 
 `
 npm run dev
